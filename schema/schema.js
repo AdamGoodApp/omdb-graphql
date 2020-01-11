@@ -3,7 +3,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
-  GraphQLList,
+  GraphQLList
 } = require("graphql");
 
 const fetch = require("node-fetch");
@@ -31,25 +31,25 @@ const queryType = new GraphQLObjectType({
       type: SearchType,
       args: {
         apiKey: { type: GraphQLString },
-        searchTerm: { type: GraphQLString },
+        searchTerm: { type: GraphQLString }
         // more...
       },
-      resolve: (root, args) => fetchSearch(args.apiKey, args.searchTerm),
+      resolve: (root, args) => fetchSearch(args.apiKey, args.searchTerm)
     },
     movie: {
       type: MovieType,
       args: {
         apiKey: { type: GraphQLString },
-        id: { type: GraphQLString },
+        id: { type: GraphQLString }
         // more...
       },
-      resolve: (root, args) => fetchMovie(args.apiKey, args.id),
-    },
-  },
+      resolve: (root, args) => fetchMovie(args.apiKey, args.id)
+    }
+  }
 });
 
 const omdbSchema = new GraphQLSchema({
-  query: queryType,
+  query: queryType
 });
 
 module.exports = omdbSchema;
